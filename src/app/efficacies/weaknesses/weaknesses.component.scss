@@ -1,0 +1,19 @@
+.poke-weaknesses {
+    .mat-card-title {
+        margin: 0 0 12px;
+    }
+
+    .mat-card-content {
+        padding-top: 16px;
+    }
+
+    .poke-multiplier {
+        h3 {
+            margin-bottom: 8px;
+        }
+
+        + .poke-multiplier {
+            margin-top: 24px;
+        }
+    }
+}

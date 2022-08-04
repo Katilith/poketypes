@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'poketypes' as poketypes;
+@use '@angular/material' as mat;
+
+@include mat.core(poketypes.$typography-config);
+@include mat.all-component-themes(poketypes.$light-theme);
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Poppins, Arial, sans-serif;
+
+    &.poke-dark {
+        @include mat.all-component-colors(poketypes.$dark-theme);
+    }
+}

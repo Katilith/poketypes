@@ -1,0 +1,28 @@
+<div class="poke-weaknesses">
+    <mat-card>
+        <h2 mat-card-title>{{ combinedTypeName }} Defensive</h2>
+
+        <mat-divider></mat-divider>
+
+        <div mat-card-content>
+            <div *ngFor="let multiplier of damageMultipliers" class="poke-multiplier">
+                <h3 class="mat-subheading1">
+                    <ng-container *ngIf="multiplier !== '0'; else noDamage">
+                        {{ multiplier }}x damage taken from:
+                    </ng-container>
+
+                    <ng-template #noDamage>
+                        No damage taken from:
+                    </ng-template>
+                </h3>
+                <mat-chip-list [selectable]="false">
+                    <mat-chip *ngFor="let type of damageFactors[multiplier]"
+                              [ngStyle]="{'background-color': typeColors[type.typeName], 'color': typeContrastColors[type.typeName]}"
+                              [selectable]="false">
+                        {{type.typeName | titlecase}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+    </mat-card>
+</div>

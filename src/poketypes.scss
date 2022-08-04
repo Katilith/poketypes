@@ -1,0 +1,213 @@
+@use '@angular/material' as mat;
+
+$poke-red-palette: (
+    50 : #ffe0e0,
+    100 : #ffb3b3,
+    200 : #ff8080,
+    300 : #ff4d4d,
+    400 : #ff2626,
+    500 : #ff0000,
+    600 : #ff0000,
+    700 : #ff0000,
+    800 : #ff0000,
+    900 : #ff0000,
+    A100 : #ffffff,
+    A200 : #fff2f2,
+    A400 : #ffbfbf,
+    A700 : #ffa6a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$poke-boston-university-red-palette: (
+    50 : #f9e0e0,
+    100 : #f0b3b3,
+    200 : #e68080,
+    300 : #db4d4d,
+    400 : #d42626,
+    500 : #cc0000,
+    600 : #c70000,
+    700 : #c00000,
+    800 : #b90000,
+    900 : #ad0000,
+    A100 : #ffd7d7,
+    A200 : #ffa4a4,
+    A400 : #ff7171,
+    A700 : #ff5858,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$poke-cerulean-palette: (
+    50 : #e7eaf9,
+    100 : #c4c9ef,
+    200 : #9da6e5,
+    300 : #7682da,
+    400 : #5867d2,
+    500 : #3b4cca,
+    600 : #3545c5,
+    700 : #2d3cbd,
+    800 : #2633b7,
+    900 : #1924ab,
+    A100 : #e0e1ff,
+    A200 : #adb2ff,
+    A400 : #7a82ff,
+    A700 : #606aff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+
+$poke-golden-yellow-palette: (
+    50 : #fffbe0,
+    100 : #fff5b3,
+    200 : #ffef80,
+    300 : #ffe84d,
+    400 : #ffe326,
+    500 : #ffde00,
+    600 : #ffda00,
+    700 : #ffd500,
+    800 : #ffd100,
+    900 : #ffc800,
+    A100 : #ffffff,
+    A200 : #fffcf2,
+    A400 : #fff0bf,
+    A700 : #ffe9a6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$poke-gold-foil-palette: (
+    50 : #f6f4e5,
+    100 : #e8e3be,
+    200 : #d9d092,
+    300 : #cabd66,
+    400 : #beaf46,
+    500 : #b3a125,
+    600 : #ac9921,
+    700 : #a38f1b,
+    800 : #9a8516,
+    900 : #8b740d,
+    A100 : #fff1bb,
+    A200 : #ffe788,
+    A400 : #ffdd55,
+    A700 : #ffd83b,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$primary: mat.define-palette($poke-red-palette);
+$accent: mat.define-palette($poke-cerulean-palette);
+$warn: mat.define-palette($poke-golden-yellow-palette);
+$deep-red: mat.define-palette($poke-boston-university-red-palette);
+$gold: mat.define-palette($poke-gold-foil-palette);
+
+
+$light-theme: mat.define-light-theme((
+    color: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+    )
+));
+
+
+$dark-theme: mat.define-dark-theme((
+    color: (
+        primary: $deep-red,
+        accent: $accent,
+        warn: $gold,
+    )
+));
+
+
+$typography-config: mat.define-typography-config(
+    $font-family:   'Poppins, Arial, sans-serif',
+    $display-4:     mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+    $display-3:     mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+    $display-2:     mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+    $display-1:     mat.define-typography-level(34px, 40px, 400),
+    $headline:      mat.define-typography-level(28px, 32px, 500),
+    $title:         mat.define-typography-level(20px, 28px, 400),
+    $subheading-2:  mat.define-typography-level(16px, 24px, 300, $letter-spacing: 0.02em),
+    $subheading-1:  mat.define-typography-level(14px, 22px, 300, $letter-spacing: 0.02em),
+    $body-2:        mat.define-typography-level(14px, 22px, 500),
+    $body-1:        mat.define-typography-level(14px, 20px, 400),
+    $caption:       mat.define-typography-level(12px, 20px, 400),
+    $button:        mat.define-typography-level(14px, 14px, 500),
+    $input:         mat.define-typography-level(inherit, 1.125, 400)
+);

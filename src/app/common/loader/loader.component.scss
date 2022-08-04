@@ -1,0 +1,21 @@
+.poke-loader {
+    &.poke-fill {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &.poke-hidden {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+    }
+}

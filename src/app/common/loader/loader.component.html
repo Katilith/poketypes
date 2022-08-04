@@ -1,0 +1,16 @@
+<div class="poke-loader"
+     [ngClass]="{
+        'poke-fill': fillSpace,
+        'poke-hidden': !visible
+    }">
+    <mat-spinner [color]="color" *ngIf="type === 'spinner'"
+                 [ngStyle]="{ width: size + 'px', height: size + 'px' }"></mat-spinner>
+
+    <a *ngIf="type === 'pokeball-large'" href="https://3d-bear.tumblr.com/post/165957179225/pokeball-3d-sprite-cant-believe-its-taken-me" target="_blank">
+        <img src="assets/pokeball.webp" alt="Pokeball"
+             [ngStyle]="{ width: size + 'px', height: size + 'px' }" />
+    </a>
+
+    <img src="assets/pokeball.gif" alt="Pokeball" *ngIf="type === 'pokeball-small'"
+         [ngStyle]="{ width: size + 'px', height: size + 'px' }" />
+</div>

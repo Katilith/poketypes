@@ -1,0 +1,53 @@
+<div class="poke-efficacies">
+    <form name="type-efficacy-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Type Search</mat-label>
+            <mat-chip-list #chipList aria-label="Type selection">
+                <mat-chip *ngFor="let type of selections" (removed)="removeType(type)"
+                          [ngStyle]="{
+                            'background-color': typeColors[type],
+                            'color': typeContrastColors[type]
+                          }">
+                    {{type | titlecase}}
+                    <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+
+                <input type="text"
+                       aria-label="Type"
+                       matInput
+                       name="type-search-input"
+                       [ngModel]="inputValue"
+                       [disabled]="selections.length === 2"
+                       [matAutocomplete]="auto"
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="false"
+                       (matChipInputTokenEnd)="addType($event)"/>
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <ng-container *ngFor="let type of selectableTypes">
+                    <mat-option [value]="type">
+                        {{type | titlecase}}
+                    </mat-option>
+                </ng-container>
+            </mat-autocomplete>
+
+            <button matSuffix mat-icon-button color="primary"
+                    aria-label="Clear types" (click)="clearTypes()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+
+    <div class="poke-strengths">
+    </div>
+
+    <div class="poke-weaknesses" *ngIf="selections.length > 0">
+        <poke-weaknesses [types]="types"
+                         [efficacies]="typeEfficacies"
+                         [type1]="selections.length > 0 ? selections[0] : undefined"
+                         [type2]="selections.length > 1 ? selections[1] : undefined"></poke-weaknesses>
+    </div>
+</div>

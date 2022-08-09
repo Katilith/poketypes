@@ -75,7 +75,7 @@ export class WeaknessesComponent implements OnInit, OnChanges {
             multiplier: e.damageFactor / 100,
         }));
 
-        const damageFactors = types.filter(type => !!type.moveDamageClassId)
+        const damageFactors = types.filter(type => type.id < 10000)
             .map(type => ({
                 typeId: type.id,
                 typeName: type.name,

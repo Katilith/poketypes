@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { AppService } from '../app.service';
 import { PokemonType, PokemonTypeEfficacy } from '../../model/pokeapi';
@@ -18,6 +18,9 @@ export class EfficaciesComponent implements OnInit {
     readonly typeContrastColors = contrasts;
     readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
+    @ViewChild('searchField', { static: true })
+    searchField: ElementRef<HTMLInputElement>;
+
     selections: [ string?, string? ] = [];
     inputValue: string = '';
 
@@ -33,6 +36,7 @@ export class EfficaciesComponent implements OnInit {
     clearTypes(): void {
         this.selections = [];
         this.inputValue = '';
+        this.searchField.nativeElement.value = '';
     }
 
     addType(event: MatChipInputEvent): void {
@@ -43,6 +47,7 @@ export class EfficaciesComponent implements OnInit {
         }
 
         this.inputValue = '';
+        this.searchField.nativeElement.value = '';
     }
 
     removeType(type: string) {
@@ -57,11 +62,13 @@ export class EfficaciesComponent implements OnInit {
             this.selections.push(event.option.value.toLowerCase());
         }
         this.inputValue = '';
+        this.searchField.nativeElement.value = '';
     }
 
     get selectableTypes(): string[] {
         return this.types.filter(
-            type => type.moveDamageClassId !== null && !this.selections.includes(type.name)
+            type => type.id < 10000 && !this.selections.includes(type.name) &&
+                (!this.inputValue || type.name.toLowerCase().includes(this.inputValue.trim().toLowerCase()))
         ).map(type => type.name);
     }
 

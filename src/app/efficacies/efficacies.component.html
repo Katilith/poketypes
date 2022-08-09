@@ -18,7 +18,8 @@
                        aria-label="Type"
                        matInput
                        name="type-search-input"
-                       [ngModel]="inputValue"
+                       #searchField
+                       [(ngModel)]="inputValue"
                        [disabled]="selections.length === 2"
                        [matAutocomplete]="auto"
                        [matChipInputFor]="chipList"
